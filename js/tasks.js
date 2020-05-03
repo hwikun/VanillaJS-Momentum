@@ -3,6 +3,7 @@ const taskList = document.querySelector(".js-taskList"),
     taskInput = taskForm.querySelector("input"),
     pendingColumn = taskList.querySelector(".pending__column"),
     finishedColumn = taskList.querySelector(".finished__column"),
+    taskColumn = taskList.querySelector(".task__column"),
     pendingList = pendingColumn.querySelector("ul"),
     finishedList = finishedColumn.querySelector("ul");
 
@@ -57,7 +58,6 @@ function deleteTask(e) {
     rmPending(li.id);
     rmFinished(li.id);
     saveTasks();
-    confirmDisplay();
 }
 
 function saveTasks() {
@@ -116,7 +116,6 @@ function globalLi(task) {
     delBtn.innerText = "❌";
     delBtn.classList.add("btn");
     delBtn.addEventListener("click", deleteTask);
-
     span.innerText = task.text;
     li.append(span, delBtn);
     li.id = task.id;
@@ -143,22 +142,9 @@ function paintFinished(task) {
     finishedList.appendChild(li);
 }
 
-function confirmDisplay() {
-    if (pending.length === 0) {
-        if (finished.length === 0) {
-            taskList.classList.remove(SHOWING);
-        } else {
-            taskList.classList.add(SHOWING);
-        }
-    } else {
-        taskList.classList.add(SHOWING);
-    }
-}
-
 function init() {
     loadTasks();
     refresh();
-    confirmDisplay();
     taskForm.addEventListener("submit", handleSubmit);
 }
 init();
