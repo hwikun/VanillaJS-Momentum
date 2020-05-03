@@ -114,7 +114,9 @@ function globalLi(task) {
         span = document.createElement("span"),
         delBtn = document.createElement("button");
     delBtn.innerText = "❌";
+    delBtn.classList.add("btn");
     delBtn.addEventListener("click", deleteTask);
+
     span.innerText = task.text;
     li.append(span, delBtn);
     li.id = task.id;
@@ -124,7 +126,8 @@ function globalLi(task) {
 function paintPending(task) {
     const li = globalLi(task);
     const finBtn = document.createElement("button");
-    finBtn.innerText = "Finished";
+    finBtn.innerText = "✅";
+    finBtn.classList.add("btn");
     finBtn.addEventListener("click", handleFinBtn);
     li.appendChild(finBtn);
     pendingList.appendChild(li);
@@ -133,7 +136,8 @@ function paintPending(task) {
 function paintFinished(task) {
     const li = globalLi(task);
     const pendBtn = document.createElement("button");
-    pendBtn.innerText = "Pend";
+    pendBtn.innerText = "⏪";
+    pendBtn.classList.add("btn");
     pendBtn.addEventListener("click", handlePendBtn);
     li.appendChild(pendBtn);
     finishedList.appendChild(li);
