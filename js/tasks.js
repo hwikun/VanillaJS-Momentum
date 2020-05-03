@@ -140,7 +140,6 @@ function paintFinished(task) {
 }
 
 function confirmDisplay() {
-    console.log(pending, finished);
     if (pending.length === 0) {
         if (finished.length === 0) {
             taskList.classList.remove(SHOWING);
